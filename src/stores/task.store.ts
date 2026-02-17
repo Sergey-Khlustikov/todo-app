@@ -6,6 +6,7 @@ export const useTaskStore = defineStore('task', () => {
   const error = ref<string | null>(null);
 
   const addTask = async (task: AddTaskDto) => {
+    console.log('add')
     try {
       isLoading.value = true;
       await TasksService.add(task);
