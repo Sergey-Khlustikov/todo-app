@@ -15,6 +15,7 @@ declare module 'vue' {
     AddNewTaskForm: typeof import('./components/AddNewTaskForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TaskList: typeof import('./components/TaskList.vue')['default']
     TodoCategoriesList: typeof import('./components/TodoCategoriesList.vue')['default']
   }
 }

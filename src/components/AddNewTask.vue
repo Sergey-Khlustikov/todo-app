@@ -1,9 +1,10 @@
 <script setup lang="ts">
   import type { AddTaskDto } from '@/api/dto/add-task.dto.js'
   import { useRules } from 'vuetify/lib/labs/rules/index.js'
-  import { useComponentState } from '@/composables/component-state.composable.js'
   import Priority from '@/models/priority.enum.js'
   import { useTaskStore } from '@/stores/task.store.js'
+
+  const emit = defineEmits(['task-added'])
 
   const taskStore = useTaskStore()
   const rules = useRules()
@@ -27,6 +28,7 @@
     await taskStore.addTask(task.value)
 
     if (!taskStore.error) {
+      emit('task-added')
       dialog.value = false
     }
   }
@@ -34,14 +36,14 @@
 
 <template>
   <div>
-    <div class="pa-4 text-center">
+    <div>
       <v-dialog v-model="dialog" max-width="600">
         <template #activator="{ props: activatorProps }">
           <v-btn
             class="text-none font-weight-regular"
             prepend-icon="mdi-plus"
             text="New Task"
-            variant="tonal"
+            variant="text"
             v-bind="activatorProps"
           />
         </template>
@@ -96,6 +98,7 @@
 
                 <v-col cols="12" sm="12">
                   <v-date-input
+                    v-model="task.dueDate"
                     label="Due date"
                     persistent-placeholder
                     prepend-icon=""

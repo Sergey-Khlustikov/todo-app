@@ -4,19 +4,19 @@
  * Bootstraps Vuetify and other plugins then mounts the App`
  */
 
+// Composables
+import { createApp } from 'vue'
+import { createRulesPlugin } from 'vuetify/lib/labs/rules/index.js'
+
 // Plugins
-import {registerPlugins} from '@/plugins/index.js'
+import { registerPlugins } from '@/plugins/index.js'
+
 import vuetify from '@/plugins/vuetify.js'
 
 // Components
 import App from './App.vue'
-
-// Composables
-import {createApp} from 'vue'
-
 // Styles
 import 'unfonts.css'
-import {createRulesPlugin} from "vuetify/lib/labs/rules/index.js";
 
 const app = createApp(App)
 
